@@ -11,31 +11,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package cmd
+package task
 
-import (
-	"fmt"
-	"os"
+import "sync"
 
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-)
-
-var rootCmd *cobra.Command
-
-func init() {
-	rootCmd = &cobra.Command{
-		Use:   "tiops",
-		Short: "Deploy TiDB cluster",
-		RunE: func(cmd *cobra.Command, args []string) error {
-			return cmd.Help()
-		},
-	}
+type Wait struct {
+	wg sync.WaitGroup
 }
 
-func Execute() {
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(color.RedString("Error: %v", err))
-		os.Exit(1)
-	}
+func (w Wait) Execute(ctx *Context) error {
+	panic("implement me")
+}
+
+func (w Wait) Rollback(ctx *Context) error {
+	panic("implement me")
 }

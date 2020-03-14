@@ -11,31 +11,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package cmd
+package task
 
-import (
-	"fmt"
-	"os"
-
-	"github.com/fatih/color"
-	"github.com/spf13/cobra"
-)
-
-var rootCmd *cobra.Command
-
-func init() {
-	rootCmd = &cobra.Command{
-		Use:   "tiops",
-		Short: "Deploy TiDB cluster",
-		RunE: func(cmd *cobra.Command, args []string) error {
-			return cmd.Help()
-		},
-	}
+type CopyFile struct {
+	src     string
+	dstHost string
+	dstPath string
 }
 
-func Execute() {
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(color.RedString("Error: %v", err))
-		os.Exit(1)
-	}
+func (c *CopyFile) Execute(ctx *Context) error {
+	panic("implement me")
+}
+
+func (c *CopyFile) Rollback(ctx *Context) error {
+	panic("implement me")
 }
